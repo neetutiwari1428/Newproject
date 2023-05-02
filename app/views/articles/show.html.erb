@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+  <p>
+    Tags:
+    <% @article.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<p><%#= image_tag @article.image.url %></p>
+
+<h3>Comments</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= render partial: 'comments/form' %>
+<%= link_to 'Back', articles_path %>
